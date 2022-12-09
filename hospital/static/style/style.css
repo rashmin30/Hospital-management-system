@@ -1,0 +1,328 @@
+table,
+th,
+td {
+    border: 2px solid;
+}
+
+
+/* navbar */
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+}
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  color: #444;
+  padding: 20px 20px;
+  font-weight: 700;
+  transition: 0.4s all;
+}
+
+.navbar-links li.navbar-dropdown {
+  position: relative;
+  padding: 0 30px;
+}
+
+.navbar-links li.navbar-dropdown:hover .dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.navbar-links li.navbar-dropdown .dropdown {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding: 20px 0;
+  top: 100%;
+  transform: translateY(50px);
+  left: 0;
+  width: 250px;
+  background-color: #fff;
+  box-shadow: 0px 10px 10px 3px rgba(0, 0, 0, 0.3);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  z-index: 111;
+  transition: 0.4s all;
+}
+.navbar-links li.navbar-dropdown .dropdown a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+.navbar-dropdown .dropdown a:hover {
+  padding-left: 30px;
+}
+.navbar-links li a:hover {
+  color: #ff3f34;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+
+ul.messages {
+    width: 29%;
+    text-align: center;
+    margin: 10px auto;
+}
+.menu {
+    background: #bce9e5;
+}
+.menu ul{
+    display: flex;
+    margin: 0;
+}
+.menu h2{
+    margin:auto 30px;
+}
+.menu li{
+    padding: 0 15px;
+}
+.menu li a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+li{
+    list-style: none;
+}
+.card-form {
+    width: 33%;
+    margin: 100px auto;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
+        0 17px 17px 0 rgba(0, 0, 0, 0.15);
+}
+
+.form-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    background: #27ae60;
+    border-radius: 10px 10px 0 0;
+}
+
+.form-body {
+    padding: 10px;
+    background: #cfcfcfd4;
+    border-radius:0 0 10px 10px ;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+input[type="text"],input[type="email"],input[type="number"],input[type="file"],input[type="password"],select {
+    appearance: none;
+    width: 88%;
+    margin: 0 15px;
+    height: 50px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background: #e8ebed;
+    color: #576366;
+    font-size: 14px;
+}
+
+.form-footer {
+    margin: 0 25px 15px 25px;
+    padding: 15px 10px;
+}
+
+input[type="submit"]{
+    display: inline-block;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    background: #27ae60;
+    font-size: 15px;
+    font-weight: bold;
+}
+::placeholder { 
+  color: rgb(0, 0, 0);
+}
+.add_doctor{
+    width: 50%;
+    margin: auto;
+}
+.add_doctor .row{
+    width: 100%;
+    margin: auto;
+}
+.add_doctor .row input[type="text"],input[type="email"],input[type="number"],input[type="file"]{
+    width: 100%;
+    background: white;
+    margin: 0;
+    color: black!important;
+}
+
+select {
+    width: 100%!important;
+    background: white!important;
+    color: black!important;
+}
+input[type="radio"] {
+width: 10%;
+}
+td > a > .fa{
+    font-size: 30px;
+}
+.g_gap{
+    grid-column-gap: 20px;
+}
+
+/* bedbook */
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .seats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    grid-row-gap: 15px;
+  }
+  .seat {
+    display: flex;
+    flex: 10%;
+    padding: 5px;
+    position: relative;
+  }
+  .seat input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+  }
+  .seat input[type="radio"]:checked + label {
+    background: #bada55;
+    animation-name: rubberBand;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+  }
+  .seat input[type="radio"]:disabled + label {
+    background: #ddd;
+    overflow: hidden;
+  }
+
+  .seat input[type="radio"]:disabled + label:hover {
+    box-shadow: none;
+  }
+
+  .seat label {
+    display: block;
+    position: relative;
+    width: 60%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.5rem;
+    padding: 15px;
+    color: #fff;
+    background: #26a69a;
+    border-radius: 2px;
+    animation-duration: 300ms;
+    animation-fill-mode: both;
+    transition-duration: 300ms;
+  }
+  .seat label:hover {
+    cursor: pointer;
+    box-shadow: 0px 0 7px 3px #ccc;
+  }
+  @-webkit-keyframes rubberBand {
+    0% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  @keyframes rubberBand {
+    0% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  .rubberBand {
+    animation-name: rubberBand;
+  }
+  
+.customhover{
+   display: block;
+    position: absolute;
+    background: #dddddd;
+    padding: 9px 26px;
+    bottom: 65px;
+    left: -12%;
+  }
+  
+
+
+
+
+
+  .parent .child {
+    display: none;  /* hide element at the start */
+  }
+
+  .parent:hover .child {
+    display: block;  /* show element on hover */
+  }

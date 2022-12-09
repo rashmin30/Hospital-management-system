@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+    {% block start %}
+    {% if data_lillness %}
+    <h2 class="text-center">Illness List</h2>
+    <br>
+    <div class="container">
+        <table id="example" class="table table-striped" style="width: 100%;">
+            <thead>
+                <th>No</th>
+                <th>Lillness_Name</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for i_lillnes in data_lillness %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i_lillnes.lillne_name}}</td>
+                    <td><a class="text-decoration-none text-dark font-weight-bold" href="update/{{i_lillnes.lillne_id}}"><i class="fa fa-pencil p-3" aria-hidden="true"></i></a></td>
+                        <td><a class="text-decoration-none text-dark font-weight-bold" href="delete/{{i_lillnes.lillne_id}}"><i class="fa fa-trash-o p-3" aria-hidden="true"></i></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+        <div class="container">
+            <form class="add_doctor"  action="" method="POST">
+            {% csrf_token %}
+              <div class="form-title">{% if illness_data %}<h4>Update Lillness</h4>{% else %}<h4>Add Lillness</h4>{% endif %}</div>
+              <div class="form-body">
+                <div class="row">
+                    <input type="hidden" name="category" value="D">
+                    <div class="d-flex  flex-column w-100">
+                        <label>Enter Lillness</label>
+                        <input type="text" name="lillne" placeholder="Enter Lillness" value="{% if illness_data %}{{ illness_data.lillne_name }}{% endif %}"required>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <input type="submit"  name="{% if illness_data %}update_illnes{% else %}add_illnes{% endif %}" value="{% if illness_data %}update_illnes{% else %}add_illnes{% endif %}">
+                </div>
+            </form>
+        </div>
+    {% endif %}
+    {% endblock %}

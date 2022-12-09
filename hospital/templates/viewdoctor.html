@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+    {% block start %}
+    <br>
+    <h2 class="text-center">Doctor List</h2>
+    <br> 
+    <div class="container">
+        <table id="example" class="table table-striped" style="width: 100%;">
+            <thead>
+                <th>No</th>
+                <th>img</th>
+                <th>id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Illness</th>
+                <th>Fess</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for i_doctor in doctor_data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img src="http://127.0.0.1:8000/media/{{i_doctor.img}}" alt="now" width="50px" height="50px"></td>
+                        <td>{{i_doctor.id}}</td>
+                        <td>{{i_doctor.first_name}}</td>
+                        <td>{{i_doctor.last_name}}</td>
+                        <td>{{i_doctor.username}}</td>
+                        <td>{{i_doctor.email}}</td>
+                        <td>{{i_doctor.phone}}</td>
+                        <td>{{i_doctor.lillness.lillne_name}}</td>
+                        <td>{{i_doctor.fess}}</td>
+                        <td><a class="text-decoration-none text-dark font-weight-bold" href="update/{{i_doctor.id}}">{% if i_doctor.is_active == False %}<i class="fa fa-unlock-alt p-3" aria-hidden="true"></i>{%else%}<i class="fa fa-pencil p-3" aria-hidden="true"></i>{%endif%}</a></td>
+                        <td><a class="text-decoration-none text-dark font-weight-bold" href="delete/{{i_doctor.id}}"><i class="fa fa-trash-o p-3" aria-hidden="true"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    {% endblock %}

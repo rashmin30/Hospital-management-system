@@ -1,0 +1,33 @@
+{% extends 'Desbord.html' %}
+{% block Title  %}Staff dashboard{% endblock %}
+{% block Nameurl %}staff-Home{% endblock %}
+{%  block Name %}Staff{% endblock %}
+{% block main %}
+<div class="container py-5">
+    <h4 class="text-center">Rooms:{{bed_data.roomId}}</h4>
+    <ol class="cabin">
+        <li class="row row--1 my-5">
+            <form action="" method="POST">
+            <ol class="seats py-5" type="A">
+                    {% csrf_token %}
+                    {% for i_bed_data in bed_data %}
+                    <li class="seat">
+                        <input  type="radio" name="book_bed" value="{{i_bed_data.bedId}}" {% if i_bed_data.bedStatus == 'True' %}disabled{% endif %} id="{{i_bed_data.bedId}}" />
+                        <label for="{{i_bed_data.bedId}}" >{{i_bed_data.bedId}}</label>
+                        {% if i_bed_data.bedStatus == 'True' %}
+                            <div class="customhover">
+                                <p>Pation Name : {{i_bed_data.user_id.username}}</p>
+                                <p>Bed No : {{i_bed_data.bedId}}</p>
+                            </div>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+                <div class="m-4">
+                    <input type="submit" value="Add" name="select_bed">
+                </div>
+            </form>
+        </li>
+    </ol>
+</div>
+{% endblock %}

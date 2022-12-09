@@ -1,0 +1,85 @@
+{% extends 'Desbord.html' %}
+{% block Title  %}Staff Dashboard{% endblock %}
+{% block Nameurl %}staff-Home{% endblock %}
+{%  block Name %}Staff{% endblock %}
+{% block main %}
+    <div class="container d-flex g_gap">
+        <div class="w-75">
+            <h4>Pation Info</h4>
+            <table id="example-Staff-Pation" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>img</th>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Illness</th>
+                        <th>Room</th>
+                        <th>Applyed Bed No:</th>
+                        <th>Select Bed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i_pations in pations_data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><img src="http://127.0.0.1:8000/media/{{i_pations.img}}" alt="now" width="50px"
+                                height="50px"></td>
+                        <td>{{i_pations.id}}</td>
+                        <td>{{i_pations.username}}</td>
+                        <td>{{i_pations.phone}}</td>
+                        <td>{{i_pations.lillness.lillne_name}}</td>
+                        <td>{{i_pations.room.roomType}}</td>
+                        <td>
+                            {% for i in check_bed_in_user%}
+                                {% if i_pations.id == i.user_id.id %}
+                                    Bed No:{{i.bedId}}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% if i_pations.room.roomType == "" or i_pations.room.roomType == None %}
+                                Room Not Select
+                            {% else %}
+                                <a href="{{i_pations.room.roomId}}/{{i_pations.id}}" ><i class="fa fa-bed" aria-hidden="true"></i></a>
+                            {%endif%}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="w-25">
+            <h4>Personal Info</h4>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>First Name</td>
+                        <td>{{request.user.first_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>{{request.user.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>UserName</td>
+                        <td>{{request.user.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{request.user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>{{request.user.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>Illness</td>
+                        <td>{{request.user.lillness.lillne_name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'Desbord.html' %}
+{% block Title  %}Doctor Dashboard{% endblock %}
+{% block Nameurl %}doctor-Home{% endblock %}
+{%  block Name %}Doctor{% endblock %}
+{% block main %}
+    <div class="container d-flex g_gap w-100">
+        <form class="add_doctor"  action="" method="POST">
+            {% csrf_token %}
+            <div class="form-title">Apply Medicines</div>
+            <div class="form-body">
+                <div class="row">
+                    <input type="hidden" name="category" value="D">
+                    <div class="d-flex  flex-column w-100">
+                        <label>Select Medicines :</label>
+                        <select name="medicineid" required>
+                            {% for i_medicines in medicines_data %}
+                                <option value="{{i_medicines.medicinesId}}" >{{i_medicines.medicinesName}} (Avilabel Quantity : {{i_medicines.medicinesQuantity}})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="d-flex  flex-column w-100 my-3">
+                        <label>Medicines Quantity</label>
+                        <input type="Number" name="medicinequantity" placeholder="Enter Medicines Quantity" min="1" oninput="validity.valid||(value='');" required>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <input type="submit" name="sendMedicines" value="Send Medicines">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

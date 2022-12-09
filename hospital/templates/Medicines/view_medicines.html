@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block start %}
+<br>
+<br>
+<h2 class="text-center">Medicines List</h2>
+<div class="container">
+    <table id="example" class="table table-striped" style="width: 100%;">
+        <thead>
+            <th>No</th>
+            <th>Medicines_Id</th>
+            <th>Medicines_Name</th>
+            <th>Illness</th>
+            <th>Medicines_Price</th>
+            <th>Medicines_Quantity</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            {% for i_medicines in medicines_data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i_medicines.medicinesId}}</td>
+                <td>{{i_medicines.medicinesName}}</td>
+                <td>{{i_medicines.lillness.lillne_name}}</td>
+                <td>{{i_medicines.medicinesPrice}}</td>
+                <td>{{i_medicines.medicinesQuantity}}</td>
+                <td><a class="text-decoration-none text-dark font-weight-bold"
+                        href="update/{{i_medicines.medicinesId}}">{% if i_medicines.is_active == False %}<i
+                            class="fa fa-unlock-alt p-3" aria-hidden="true"></i>{%else%}<i class="fa fa-pencil p-3"
+                            aria-hidden="true"></i>{%endif%}</a></td>
+                <td><a class="text-decoration-none text-dark font-weight-bold"
+                        href="delete/{{i_medicines.medicinesId}}"><i class="fa fa-trash-o p-3"
+                            aria-hidden="true"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

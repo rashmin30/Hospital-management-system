@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+    {% block start %}
+
+        {% if room_data %}
+            <table class="table w-50 table-bordered"  >
+                <thead>
+                <tr class="bg-success text-dark">
+                    <th scope="col">No</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Add Bed</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for i_room in room_data %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i_room.roomType}}</td>
+                        <td><a class="text-decoration-none text-dark font-weight-bold" href="update/{{i_room.roomId}}"><i class="fa fa-pencil p-3" aria-hidden="true"></i></a></td>
+                            <td><a class="text-decoration-none text-dark font-weight-bold" href="delete/{{i_room.roomId}}"><i class="fa fa-trash-o p-3" aria-hidden="true"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+          </table>
+        {% else %}
+            <div class="container">
+                <form class="add_doctor"  action="" method="POST">
+                {% csrf_token %}
+                <div class="form-title">{% if room_update_data %}<h4>Update Rooms</h4>{% else %}<h4>Add Rooms</h4>{% endif %}</div>
+                <div class="form-body">
+                    <div class="row">
+                        <input type="hidden" name="category" value="D">
+                        <div class="d-flex  flex-column w-100 my-3">
+                            <label>Enter Room fType</label>
+                            <input type="text" name="type" placeholder="Enter Type" value="{% if room_update_data %}{{ room_update_data.roomType }}{% endif %}"required>
+                        </div>
+                        <div class="d-flex  flex-column w-100 my-3">
+                            <label>Enter Room Price</label>
+                            <input type="Number" name="price" placeholder="Enter Price" value="{% if room_update_data %}{{ room_update_data.roomPrice }}{% endif %}" min="0" oninput="validity.valid||(value='');" required>
+                        </div>
+                        <div class="d-flex  flex-column w-100 my-3">
+                            <label>Enter Bed List</label>
+                            <input type="Number" name="bedlist" placeholder="Enter Bed List" min="1" oninput="validity.valid||(value='');" required>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <input type="submit"  name="{% if room_update_data %}update_Room{% else %}add_Room{% endif %}" value="{% if room_update_data %}update_Room{% else %}add_Room{% endif %}">
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    {% endblock %}
